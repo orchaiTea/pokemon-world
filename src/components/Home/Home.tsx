@@ -15,6 +15,21 @@ const Home: React.FC = () => {
         <div className="col-span-3">
           <div className="bg-[#e5593f]">
             <nav className="container mx-auto flex items-center justify-between py-1">
+              <a href="#">
+                <img
+                  src={logo}
+                  alt="Poké World"
+                  className="h-10 w-auto mr-4 lg:hidden cursor-pointer"
+                />
+              </a>
+              <a href="#">
+                <img
+                  src={logo}
+                  alt="Poké World"
+                  className="h-10 w-auto mr-auto hidden lg:block cursor-pointer"
+                />
+              </a>
+
               <button
                 onClick={toggleMenu}
                 className="block lg:hidden focus:outline-none mr-2"
@@ -31,42 +46,29 @@ const Home: React.FC = () => {
                 </svg>
               </button>
 
-              <div className="flex items-center">
-                <img
-                  src={logo}
-                  alt="Poké World"
-                  className="h-8 w-auto mr-4 lg:hidden"
-                />
-                <img
-                  src={logo}
-                  alt="Poké World"
-                  className="h-10 w-auto mr-auto hidden lg:block"
-                />
-              </div>
-
               <ul className="hidden lg:flex flex-grow items-end justify-end">
-                <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                   <a href="#">Home</a>
                 </li>
-                <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                   <a href="#">About</a>
                 </li>
-                <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                   <a href="#">Pokédex</a>
                 </li>
-                <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                   <a href="#">Article's</a>
                 </li>
-                <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                   <a href="#">More</a>
                 </li>
               </ul>
             </nav>
 
             {isOpen && (
-              <div className="lg:hidden fixed inset-0 z-50 bg-gray-200 flex flex-col items-end">
+              <div className="lg:hidden fixed inset-0 z-50 bg-[#e5593f] flex flex-col items-end">
                 <div className="px-4 py-2 flex items-center justify-between w-full">
-                  <img src={logo} alt="Poké World" className="h-8 w-auto" />
+                  <img src={logo} alt="Poké World" className="h-10 w-auto" />
 
                   <button onClick={toggleMenu} className="focus:outline-none">
                     <svg
@@ -85,16 +87,16 @@ const Home: React.FC = () => {
                   </button>
                 </div>
                 <ul className="py-2">
-                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-300">
+                  <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                     <a href="#">Home</a>
                   </li>
-                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-300">
+                  <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                     <a href="#">About</a>
                   </li>
-                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-300">
+                  <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                     <a href="#">Services</a>
                   </li>
-                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-300">
+                  <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
                     <a href="#">Contact</a>
                   </li>
                 </ul>
