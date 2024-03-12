@@ -1,18 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeroImg from "../../img/heroImg.jpg";
 import logo from "../../img/logo.png";
+import services from "../../services/services";
+import PokemonOfTheDay from "./PokemonOfTheDay";
+
+type POTD = {
+  name: string;
+  types: [{ type: { name: string } }];
+  abilities: [{ ability: { name: string } }, { ability: { name: string } }];
+  sprites: {
+    other: {
+      "official-artwork": {
+        front_default: string;
+      };
+    };
+  };
+};
 
 const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [pokemonData, setPokemonData] = useState<POTD | null>(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await services.getPokemon();
+        setPokemonData(data);
+        console.log(data);
+        console.log(data.sprites.other["official-artwork"].front_default);
+      } catch (error) {
+        console.log("Error fetching Pokemon data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
-      <div className="grid grid-cols-3">
-        <div className="col-span-3">
+      <div className="grid grid-cols-4">
+        <div className="col-span-4">
           <div className="bg-[#e5593f]">
             <nav className="container mx-auto flex items-center justify-between py-1">
               <a href="#">
@@ -104,7 +135,7 @@ const Home: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="col-span-2 pl-10 bg-[#222831]">
+        <div className="col-span-3 pl-10 bg-[#222831]">
           <div
             style={{
               backgroundImage: `url(${HeroImg})`,
@@ -130,19 +161,10 @@ const Home: React.FC = () => {
             </button>
           </div>
         </div>
-        <div className="col-span-3 px-3 py-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A possimus
-          necessitatibus modi eaque! Dicta magnam omnis dolorum unde
-          reprehenderit vero quae voluptate, repudiandae deleniti similique,
-          aspernatur id eligendi. Quas, voluptat. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Iure nisi facere minima qui porro
-          repellat corporis rem possimus error odit maiores voluptate, sit minus
-          nihil? Expedita mollitia doloribus quisquam ab. Lorem ipsum dolor, sit
-          amet consectetur adipisicing elit. Cum optio impedit culpa saepe
-          aliquam quae at earum. Magni recusandae officiis quisquam culpa
-          tempora labore, ipsum obcaecati, architecto vel, eveniet dignissimos.
+        <div className="col-span-4 pr-10 py-0 bg-[#222831]">
+          <PokemonOfTheDay pokemon={pokemonData} />
         </div>
-        <div className="col-span-3 px-3 py-4">Footer</div>
+        <div className="col-span-4 px-3 py-4 bg-gray-500">Footer</div>
       </div>
     </div>
   );
