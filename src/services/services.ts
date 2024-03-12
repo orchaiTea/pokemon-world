@@ -14,10 +14,12 @@ export class ApiService {
     });
   }
 
-  async getPokemon(): Promise<any> {
+  async getPokemonOfTheDay(
+    id: number = Math.floor(Math.random() * 1302) + 1
+  ): Promise<any> {
     try {
       const response: AxiosResponse<any> = await this.client.get(
-        "pokemon/ditto"
+        `pokemon/${id}`
       );
       return response.data;
     } catch (error) {

@@ -4,8 +4,9 @@ import logo from "../../img/logo.png";
 import services from "../../services/services";
 import PokemonOfTheDay from "./PokemonOfTheDay";
 
-type POTD = {
+type PokemonOfTheDay = {
   name: string;
+  id: number;
   types: [{ type: { name: string } }];
   abilities: [{ ability: { name: string } }, { ability: { name: string } }];
   sprites: {
@@ -20,7 +21,7 @@ type POTD = {
 const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [pokemonData, setPokemonData] = useState<POTD | null>(null);
+  const [pokemonData, setPokemonData] = useState<PokemonOfTheDay | null>(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,10 +30,9 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await services.getPokemon();
+        const data = await services.getPokemonOfTheDay();
         setPokemonData(data);
-        console.log(data);
-        console.log(data.sprites.other["official-artwork"].front_default);
+        // console.log(data);
       } catch (error) {
         console.log("Error fetching Pokemon data:", error);
       }
