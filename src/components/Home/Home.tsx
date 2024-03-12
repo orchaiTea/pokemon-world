@@ -161,7 +161,7 @@ const Home: React.FC = () => {
             </button>
           </div>
         </div>
-        <div className="col-span-4 pr-10 py-0 bg-[#222831]">
+        <div className="col-span-4 pr-10 py-0">
           <PokemonOfTheDay pokemon={pokemonData} />
         </div>
         <div className="col-span-4 px-3 py-4 bg-gray-500">Footer</div>

@@ -17,30 +17,49 @@ type POTDProp = {
 
 const PokemonOfTheDay: React.FC<POTDProp> = ({ pokemon }) => {
   return (
-    <div className="pl-10">
-      <div className="bg-gray-100 pl-10 shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Pokémon of the Day</h2>
+    <div className="max-w-md mx-auto rounded overflow-hidden shadow-lg">
+      <div className="px-6 py-4 bg-slate-50">
+        <div className="font-bold text-xl mb-2">Pokémon of the Day</div>
         {pokemon && (
-          <div className="flex items-center justify-evenly">
-            <img
-              src={pokemon.sprites.other["official-artwork"].front_default}
-              alt={pokemon.name}
-              className="w-44 h-44 rounded-md mb-4 border-solid border-2 border-sky-500"
-            />
-            <div className="flex flex-col items-start">
-              <p className="px-2 py-3">
-                <span className="font-semibold">Name:</span> {""}
-                {pokemon.name}
-              </p>
-              <p className="px-2 py-3">
-                <span className="font-semibold">Type:</span> {""}
-                {pokemon.types[0].type.name}
-              </p>
-              <p className="px-2 py-3">
-                <span className="font-semibold">Abilities:</span>{" "}
-                {pokemon.abilities[0].ability.name},{" "}
-                {pokemon.abilities[1].ability.name}
-              </p>
+          <div className="flex flex-wrap justify-between">
+            <div className="w-1/2">
+              <img
+                src={pokemon.sprites.other["official-artwork"].front_default}
+                alt={pokemon.name}
+                className="w-full rounded-lg"
+              />
+            </div>
+            <div className="w-1/2 pl-4">
+              <table className="border-collapse border border-gray-300">
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 font-semibold">
+                      Name:
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {pokemon.name}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 font-semibold">
+                      Type:
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {pokemon.types[0].type.name}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 font-semibold">
+                      Abilities:
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {pokemon.abilities
+                        .map((ability) => ability.ability.name)
+                        .join(", ")}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         )}
