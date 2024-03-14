@@ -9,12 +9,13 @@ import {
 } from "react-router-dom";
 
 import Layout from "./components/Layout.tsx";
-import Home from "./components/Home/Home.tsx";
+import { Home, Pokedex } from "./components/index.ts";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path="" element={<Home />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/pokedex" element={<Pokedex />} />
     </Route>
   )
 );

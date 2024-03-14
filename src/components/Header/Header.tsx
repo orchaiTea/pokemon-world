@@ -43,13 +43,13 @@ const Header: React.FC = () => {
 
         <ul className="hidden lg:flex flex-grow items-end justify-end">
           <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
-            <Link to="#">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
             <a href="#">About</a>
           </li>
           <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
-            <Link to="#">Pokédex</Link>
+            <Link to="/pokedex">Pokédex</Link>
           </li>
           <li className="px-4 py-2 rounded-md text-gray-800 hover:bg-[#a03e2c] hover:text-white">
             <a href="#">Article's</a>
