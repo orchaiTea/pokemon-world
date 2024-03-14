@@ -21,24 +21,32 @@ type PokemonOfTheDay = {
 const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [pokemonData, setPokemonData] = useState<PokemonOfTheDay | null>(null);
+  const [pokemonData, setPokemonData] = useState<PokemonOfTheDay | null>(() => {
+    const storedData = localStorage.getItem("pokemonOfTheDay");
+    return storedData ? JSON.parse(storedData) : null;
+  });
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchPokemonData = async () => {
       try {
         const data = await services.getPokemonOfTheDay();
         setPokemonData(data);
-        // console.log(data);
+        localStorage.setItem("pokemonOfTheDay", JSON.stringify(data));
       } catch (error) {
-        console.log("Error fetching Pokemon data:", error);
+        console.log("Error fetching Pokemon of the day:", error);
       }
     };
-    fetchData();
-  }, []);
+    if (!pokemonData) {
+      fetchPokemonData();
+    }
+
+    const intervalId = setInterval(fetchPokemonData, 24 * 60 * 60 * 1000);
+    return () => clearInterval(intervalId);
+  }, [pokemonData]);
 
   return (
     <div>

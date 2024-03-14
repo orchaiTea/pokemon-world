@@ -18,7 +18,7 @@ type PokemonOfTheDayProp = {
 
 const PokemonOfTheDay: React.FC<PokemonOfTheDayProp> = ({ pokemon }) => {
   return (
-    <div className="max-w-fit mx-auto rounded overflow-hidden shadow-lg">
+    <div className="max-w-md mx-auto rounded overflow-hidden shadow-lg">
       <div className="px-6 py-4 bg-slate-100">
         <div className="inline-block font-bold text-xl mb-2 px-2 py-3 border-b border-slate-300">
           Pokémon of the Day
