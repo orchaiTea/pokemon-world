@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import HeroImg from "../../img/heroImg.jpg";
-import logo from "../../img/logo.png";
+// import logo from "../../img/logo.png";
 import services from "../../services/services";
 import PokemonOfTheDay from "./PokemonOfTheDay";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 type PokemonOfTheDay = {
   name: string;
@@ -49,8 +50,9 @@ const Home: React.FC = () => {
   }, [pokemonData]);
 
   return (
-    <div>
+    <div className="">
       <Header />
+      {/* <Footer /> */}
       <div className="grid grid-cols-4">
         {/* <div className="col-span-4">
           <div className="bg-[#e5593f]">
@@ -173,7 +175,7 @@ const Home: React.FC = () => {
         <div className="col-span-4 pr-10 py-0">
           <PokemonOfTheDay pokemon={pokemonData} />
         </div>
-        <div className="col-span-4 px-3 py-2 bg-[#e5593f]">
+        {/* <div className="col-span-4 px-3 py-2 bg-[#e5593f]">
           <div className="flex items-center justify-between">
             <a href="#">
               <img
@@ -194,7 +196,8 @@ const Home: React.FC = () => {
               </a>
             </p>
           </div>
-        </div>
+        </div> */}
+        <Footer />
       </div>
     </div>
   );
