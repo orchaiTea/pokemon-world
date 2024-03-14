@@ -3,8 +3,6 @@ import HeroImg from "../../img/heroImg.jpg";
 // import logo from "../../img/logo.png";
 import services from "../../services/services";
 import PokemonOfTheDay from "./PokemonOfTheDay";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
 type PokemonOfTheDay = {
   name: string;
@@ -50,10 +48,9 @@ const Home: React.FC = () => {
   }, [pokemonData]);
 
   return (
-    <div className="">
-      <Header />
-      {/* <Footer /> */}
+    <div>
       <div className="grid grid-cols-4">
+        {/* <Header /> */}
         {/* <div className="col-span-4">
           <div className="bg-[#e5593f]">
             <nav className="container mx-auto flex items-center justify-between py-1">
@@ -197,7 +194,6 @@ const Home: React.FC = () => {
             </p>
           </div>
         </div> */}
-        <Footer />
       </div>
     </div>
   );
