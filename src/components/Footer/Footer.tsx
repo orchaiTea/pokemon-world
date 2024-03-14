@@ -3,7 +3,7 @@ import logo from "../../img/logo.png";
 
 const Footer: React.FC = () => {
   return (
-    <div className="col-span-4 px-3 py-2 bg-[#e5593f]">
+    <div className="w-full max-w-full max-auto px-3 py-3 bg-[#e5593f]">
       <div className="flex items-center justify-between">
         <a href="#">
           <img

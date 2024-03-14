@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import HeroImg from "../../img/heroImg.jpg";
-// import logo from "../../img/logo.png";
 import services from "../../services/services";
 import PokemonOfTheDay from "./PokemonOfTheDay";
 
@@ -18,16 +17,10 @@ type PokemonOfTheDay = {
 };
 
 const Home: React.FC = () => {
-  // const [isOpen, setIsOpen] = useState(false);
-
   const [pokemonData, setPokemonData] = useState<PokemonOfTheDay | null>(() => {
     const storedData = localStorage.getItem("pokemonOfTheDay");
     return storedData ? JSON.parse(storedData) : null;
   });
-
-  // const toggleMenu = () => {
-  //   setIsOpen(!isOpen);
-  // };
 
   useEffect(() => {
     const fetchPokemonData = async () => {
