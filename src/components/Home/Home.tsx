@@ -3,6 +3,7 @@ import HeroImg from "../../img/heroImg.jpg";
 import logo from "../../img/logo.png";
 import services from "../../services/services";
 import PokemonOfTheDay from "./PokemonOfTheDay";
+import Header from "../Header/Header";
 
 type PokemonOfTheDay = {
   name: string;
@@ -18,16 +19,16 @@ type PokemonOfTheDay = {
 };
 
 const Home: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   const [pokemonData, setPokemonData] = useState<PokemonOfTheDay | null>(() => {
     const storedData = localStorage.getItem("pokemonOfTheDay");
     return storedData ? JSON.parse(storedData) : null;
   });
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // const toggleMenu = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
   useEffect(() => {
     const fetchPokemonData = async () => {
@@ -49,8 +50,9 @@ const Home: React.FC = () => {
 
   return (
     <div>
+      <Header />
       <div className="grid grid-cols-4">
-        <div className="col-span-4">
+        {/* <div className="col-span-4">
           <div className="bg-[#e5593f]">
             <nav className="container mx-auto flex items-center justify-between py-1">
               <a href="#">
@@ -141,7 +143,7 @@ const Home: React.FC = () => {
               </div>
             )}
           </div>
-        </div>
+        </div> */}
         <div className="col-span-3 pl-10 bg-[#222831]">
           <div
             style={{
