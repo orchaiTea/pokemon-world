@@ -8,7 +8,6 @@ type PokemonOfTheDay = {
   name: string;
   id: number;
   types: [{ type: { name: string } }];
-  abilities: [{ ability: { name: string } }, { ability: { name: string } }];
   sprites: {
     other: {
       "official-artwork": {
@@ -172,7 +171,28 @@ const Home: React.FC = () => {
         <div className="col-span-4 pr-10 py-0">
           <PokemonOfTheDay pokemon={pokemonData} />
         </div>
-        <div className="col-span-4 px-3 py-4 bg-gray-500">Footer</div>
+        <div className="col-span-4 px-3 py-2 bg-[#e5593f]">
+          <div className="flex items-center justify-between">
+            <a href="#">
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-10 w-auto mr-4 block cursor-pointer"
+              />
+            </a>
+            <p className="text-sm">© Copyright 2024.</p>
+            <p className="text-sm">
+              Created by{" "}
+              <a
+                href="https://github.com/orchaiTea"
+                target="_black"
+                className="text-gray-800 hover:underline"
+              >
+                Pushkar Tripathi
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

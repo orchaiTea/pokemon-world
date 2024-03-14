@@ -2,7 +2,6 @@ type Pokemon = {
   name: string;
   id: number;
   types: [{ type: { name: string } }];
-  abilities: [{ ability: { name: string } }, { ability: { name: string } }];
   sprites: {
     other: {
       "official-artwork": {
@@ -29,7 +28,7 @@ const PokemonOfTheDay: React.FC<PokemonOfTheDayProp> = ({ pokemon }) => {
               <img
                 src={pokemon.sprites.other["official-artwork"].front_default}
                 alt={pokemon.name}
-                className="w-full rounded-lg bg-slate-300"
+                className="w-full rounded-lg bg-slate-200"
               />
             </div>
             <div className="w-1/2 pl-4">
@@ -40,7 +39,7 @@ const PokemonOfTheDay: React.FC<PokemonOfTheDayProp> = ({ pokemon }) => {
                       Index:
                     </td>
                     <td className="border border-slate-300 px-4 py-2">
-                      {pokemon.id}
+                      {`#${pokemon.id}`}
                     </td>
                   </tr>
                   <tr>
