@@ -41,16 +41,16 @@ const Home: React.FC = () => {
         const hoursDifference = timeDifference / (1000 * 60 * 60);
 
         if (hoursDifference >= 24) {
-          fetchPokemonData(); // Fetch data if 24 hours have passed since the last fetch
+          fetchPokemonData();
         } else {
-          setPokemonData(JSON.parse(storedData)); // Use stored data
+          setPokemonData(JSON.parse(storedData));
         }
       } catch (error) {
         console.log("Error parsing stored data:", error);
         fetchPokemonData();
       }
     } else {
-      fetchPokemonData(); // Fetch data if not found in localStorage
+      fetchPokemonData();
     }
 
     const intervalId = setInterval(fetchPokemonData, 24 * 60 * 60 * 1000);
