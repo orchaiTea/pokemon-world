@@ -13,17 +13,17 @@ type Props = {
 
 const PokemonCard: React.FC<Props> = ({ pokemon }) => {
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg">
-      <div className="image-section">
+    <div className="max-w-xs grid grid-cols-2 rounded-md border-2 border-gray-500 overflow-hidden shadow-lg">
+      <div className="flex justify-start">
         <img
           src={pokemon.sprites.front_default}
           alt={pokemon.name}
-          className="w-full border border-black rounded-md"
+          className="w-20 h-20 border-r-2 border-gray-500 rounded"
         />
       </div>
       <div className="">
-        <p className="font-bold text-xl mb-2">{pokemon.name}</p>
-        <div className="pokemon-types">
+        <p className="font-bold text-xl py-2">{pokemon.name}</p>
+        <div className="flex justify-between">
           {pokemon.types.map((type, index) => (
             <span
               key={index}
