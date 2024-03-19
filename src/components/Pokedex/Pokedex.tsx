@@ -47,7 +47,7 @@ const Pokedex: React.FC<Props> = () => {
   );
 
   return (
-    <div className="">
+    <div className="px-4 py-3 mx-2 my-3">
       <div className="my-4">
         <input
           type="text"
