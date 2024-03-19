@@ -17,28 +17,45 @@ type PokemonOfTheDay = {
 };
 
 const Home: React.FC = () => {
-  const [pokemonData, setPokemonData] = useState<PokemonOfTheDay | null>(() => {
-    const storedData = localStorage.getItem("pokemonOfTheDay");
-    return storedData ? JSON.parse(storedData) : null;
-  });
+  const [pokemonData, setPokemonData] = useState<PokemonOfTheDay | null>(null);
 
   useEffect(() => {
     const fetchPokemonData = async () => {
       try {
         const data = await services.getPokemonOfTheDay();
-        setPokemonData(data);
         localStorage.setItem("pokemonOfTheDay", JSON.stringify(data));
+        localStorage.setItem("lastFetchTime", String(Date.now()));
+        setPokemonData(data);
       } catch (error) {
         console.log("Error fetching Pokemon of the day:", error);
       }
     };
-    if (!pokemonData) {
-      fetchPokemonData();
+
+    const storedData = localStorage.getItem("pokemonOfTheDay");
+    const lastFetchTime = localStorage.getItem("lastFetchTime");
+
+    if (storedData && lastFetchTime) {
+      try {
+        const currentTime = Date.now();
+        const timeDifference = currentTime - parseInt(lastFetchTime, 10);
+        const hoursDifference = timeDifference / (1000 * 60 * 60);
+
+        if (hoursDifference >= 24) {
+          fetchPokemonData(); // Fetch data if 24 hours have passed since the last fetch
+        } else {
+          setPokemonData(JSON.parse(storedData)); // Use stored data
+        }
+      } catch (error) {
+        console.log("Error parsing stored data:", error);
+        fetchPokemonData();
+      }
+    } else {
+      fetchPokemonData(); // Fetch data if not found in localStorage
     }
 
     const intervalId = setInterval(fetchPokemonData, 24 * 60 * 60 * 1000);
     return () => clearInterval(intervalId);
-  }, [pokemonData]);
+  }, []);
 
   return (
     <div>
